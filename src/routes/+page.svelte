@@ -66,13 +66,13 @@
 
 <main class="mb-32 mx-auto text-center px-4 md:px-12 py-12" style="--activeColor: {activeColor}; --lightSafeActiveColor: {darkerIfNeeded(activeColor)}">
   <header>
-    <h1 class="text-6xl text-[var(--lightSafeActiveColor)] [text-shadow:_0_3px_0_rgb(0_0_0_)]">ask the snake</h1>
+    <h1 class="text-5xl text-[var(--lightSafeActiveColor)] [text-shadow:_0_3px_0_rgb(0_0_0_)]">ask the snake</h1>
   </header>
 
   <section class="w-full max-w-xl mx-auto text-center mb-12">
-    <h2 class="text-2xl italic uppercase">when do i get to pick !?!?!?</h2>
+    <h2 class="text-xl italic uppercase">when do i get to pick !?!?!?</h2>
     
-    <div use:draggable class="mx-auto h-36 w-3/5 bg-cover hover:scale-150 -mt-6 active:cursor-grabbing cursor-grab duration-500 ease-in-out bg-[url('https://media4.giphy.com/media/FAMHmfVnYA10MntgZn/giphy.gif')]">
+    <div use:draggable class="mx-auto h-48 w-4/5 bg-cover hover:scale-150 -mt-6 active:cursor-grabbing cursor-grab duration-500 ease-in-out bg-[url('https://media4.giphy.com/media/FAMHmfVnYA10MntgZn/giphy.gif')]">
     </div>
 
     
@@ -88,7 +88,7 @@
         <label for="rosterSize" class="basis-2/3 rounded-l-lg border border-black bg-black text-white px-2 py-1">
           roster size
         </label>
-        <input id="rosterSize" type="number" bind:value={rosterSize} min="1" max="50" class="font-mono basis-1/3 rounded-r-lg border border-black text-right px-2 bg-white focus:outline-none">
+        <input id="rosterSize" type="number" bind:value={rosterSize} min="5" max="50" class="font-mono basis-1/3 rounded-r-lg border border-black text-right px-2 bg-white focus:outline-none">
       </div>
 
       <div class="my-2 text-left flex flex-wrap">
@@ -111,17 +111,6 @@
           {/each}
         </select>
       </div>
-
-      <!-- <div>
-        {#each colors as [hex, name]}
-          <div class="w-2 h-2 bg-[{hex}]"></div>
-          {name.toLowerCase()}
-          {isLight(hex)}
-        {/each}
-      </div> -->
-
-
-      <!-- <button on:click={submit} class="my-4 rounded-lg px-4 bg-[var(--activeColor)] text-xl opacity-80 drop-shadow-md hover:opacity-100 focus:opacity-80 focus:drop-shadow-none">ask</button> -->
     </form>
   </section>
 
@@ -133,8 +122,16 @@
       {/each}
     </ul>
 
-    <div class="mt-6">
-      <!-- your pick cadence is: {pickCadence} -->
+    <div class="my-12">
+      <h2 class="text-2xl italic uppercase">what does this mean !?!?</h2>
+      <p class="max-w-lg my-6 mx-auto text-center">
+        you'll wait for <b>{picks[0]-1}</b> picks<br>
+        and then <b>{picks[1]-picks[0]-1}</b> picks<br>
+        and then <b>{picks[2]-picks[1]-1}</b> picks<br>
+        followed by <b>{picks[3]-picks[2]-1}</b> picks<br>
+        and another <b>{picks[4]-picks[3]-1}</b> picks<br>
+        then <b>{picks[5]-picks[4]-1}</b> picks<br>
+        and so on and so on.</p>
     </div>
 
     <div class="my-20">
