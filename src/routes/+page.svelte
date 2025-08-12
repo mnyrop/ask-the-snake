@@ -102,7 +102,12 @@
   let playerNameString = 'Could be anyone';
 
   function showPlayerForPick(pickNum) {
-    const player = players.find(p => Number(p.rank) === Number(pickNum));
+    // Introduce a random offset to the pick number to simulate variability
+    // This will randomly adjust the pick number by -5 to +5 but will not exceed the max rank or be less than 1
+    const offset = Math.floor(Math.random() * 11) - 5; // Random number between -5 and 5
+    const adjustedPickNum = Math.max(1, Math.min(50, pickNum + offset)); // Ensure it stays within 1 to 50
+
+    const player = players.find(p => Number(p.rank) === Number(adjustedPickNum));
     console.log("player", player);
     if (player && player.espnID) {
       playerImgSrc = `https://a.espncdn.com/combiner/i?img=/i/headshots/nfl/players/full/${player.espnID}.png&w=350&h=254`;
